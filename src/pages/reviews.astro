@@ -1,124 +1,134 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageHero from '../components/PageHero.astro';
-import CtaStrip from '../components/CtaStrip.astro';
 import { Star } from '@lucide/astro';
+import CtaBand from '../components/CtaBand.astro';
 
 const reviews = [
   {
-    quote:
-      'The crew did exceptional work from start to finish. My neighbors have been stopping to compliment the results — the attention to detail and the clean worksite really stood out.',
-    reviewer: 'Sandra M. · Homeowner · Renton, WA',
-    label: 'Google Review · Driveway & Steps',
+    quote: 'The crew did exceptional work from start to finish. My neighbors have been stopping to compliment the results — the attention to detail and the clean worksite really stood out.',
+    attribution: 'Sandra M. · Homeowner · Renton, WA',
+    source: 'Google Review · Driveway & Steps',
   },
   {
-    quote:
-      'From the very first walkthrough I could tell they knew exactly what they were doing. Proper footings, rebar throughout, clean drainage detail — and the pricing was more than fair.',
-    reviewer: 'Kevin P. · Homeowner · Auburn, WA',
-    label: 'Google Review · Retaining Wall',
+    quote: 'From the very first walkthrough I could tell they knew exactly what they were doing. Proper footings, rebar throughout, clean drainage detail — and the pricing was more than fair.',
+    attribution: 'Kevin P. · Homeowner · Auburn, WA',
+    source: 'Google Review · Retaining Wall',
   },
   {
-    quote:
-      'Outstanding work on our back patio. They paid close attention to every detail and made sure we were happy throughout the entire process. Would absolutely hire again.',
-    reviewer: 'Teresa G. · Homeowner · Kent, WA',
-    label: 'Google Review · Back Patio',
+    quote: 'Outstanding work on our back patio. They paid close attention to every detail and made sure we were happy throughout the entire process. Would absolutely hire again.',
+    attribution: 'Teresa G. · Homeowner · Kent, WA',
+    source: 'Google Review · Back Patio',
   },
   {
-    quote:
-      'Clean, smooth, and very well-finished. Professional from estimate to cleanup — I\'d recommend them to anyone.',
-    reviewer: 'Mike T. · Homeowner · Federal Way, WA',
-    label: 'Google Review · Concrete Walkway',
+    quote: 'Clean, smooth, and very well-finished. Professional from estimate to cleanup — I\'d recommend them to anyone.',
+    attribution: 'Mike T. · Homeowner · Federal Way, WA',
+    source: 'Google Review · Concrete Walkway',
   },
   {
-    quote:
-      'Great job removing the old driveway and laying new concrete. They walked us through the finish options and got everything done on time despite some tough weather.',
-    reviewer: 'Brian S. · Homeowner · Covington, WA',
-    label: 'Google Review · Driveway & Walkways',
+    quote: 'Great job removing the old driveway and laying new concrete. They walked us through the finish options and got everything done on time despite some tough weather.',
+    attribution: 'Brian S. · Homeowner · Covington, WA',
+    source: 'Google Review · Driveway & Walkways',
   },
   {
-    quote:
-      "Very professional, great communicators, and skilled at both prep and finish work. Reliable, efficient, and left the site spotless. My kid was sad when the crew left — that tells you everything.",
-    reviewer: 'James E. · Homeowner · Auburn, WA',
-    label: 'Google Review · Concrete Flatwork',
+    quote: 'Very professional, great communicators, and skilled at both prep and finish work. Reliable, efficient, and left the site spotless. My kid was sad when the crew left — that tells you everything.',
+    attribution: 'James E. · Homeowner · Auburn, WA',
+    source: 'Google Review · Concrete Flatwork',
   },
 ];
 ---
 
 <BaseLayout
-  title="Reviews"
-  description="4.5-star Google reviews for Cascade Concrete Co. See what homeowners across South King County say about our crew."
+  title="Client Reviews — Cascade Concrete Co."
+  description="Real reviews from homeowners across South King County. See what clients say about Cascade Concrete Co."
+  mobileCta="inner"
 >
-  <PageHero
-    image="/images/mac_walkway_complete_03.jpg"
-    eyebrow="CLIENT REVIEWS"
-    title="What Our Clients Say"
-    subtitle="What customers say about working with the Cascade Concrete team."
-    overlay="rgba(13,17,23,0.82)"
-  />
-
-  <section class="section-fade bg-surface py-16 px-4 sm:px-6 lg:px-16">
-    <div class="max-w-3xl mx-auto">
-      <blockquote class="text-text italic text-lg md:text-xl leading-relaxed mb-6">
-        "The crew did exceptional work from start to finish. My neighbors kept stopping to say something — they noticed the clean worksite as much as the finished result. The attention to detail was impressive."
-      </blockquote>
-      <p class="text-green font-semibold text-sm mb-6">— Sandra M., Homeowner · Renton, WA</p>
-      <p class="text-text-muted text-sm leading-relaxed">
-        Sandra came across Cascade Concrete Co. after noticing a neighbor's project in progress. Her project included a widened driveway, new entry stairs, and a full concrete refresh. The result speaks for itself.
-      </p>
+  <section
+    class="page-hero"
+    style="background-image: linear-gradient(rgba(10,10,10,0.80), rgba(10,10,10,0.80)), url('/images/mac_walkway_01.jpg');"
+  >
+    <div>
+      <p class="eyebrow text-green">Client Reviews</p>
+      <h1>Trusted by Homeowners Across South King County</h1>
+      <p>What customers say about working with the Cascade Concrete team.</p>
     </div>
   </section>
 
-  <section class="section-fade bg-surface py-12 px-4">
-    <div class="max-w-[480px] mx-auto text-center">
-      <p class="font-display text-green text-[96px] leading-none mb-2">4.5</p>
-      <div class="flex justify-center gap-1 mb-3">
-        {Array.from({ length: 4 }).map(() => (
-          <Star size={24} color="#f59e0b" fill="#f59e0b" />
-        ))}
-        <Star size={24} color="#f59e0b" fill="none" />
+  <section class="bg-white py-20 px-6 md:px-16">
+    <div class="max-w-[900px] mx-auto grid grid-cols-1 md:grid-cols-[1.2fr_1fr] gap-10 md:gap-14 items-start">
+      <div>
+        <p class="eyebrow">Featured Review</p>
+        <h2 class="font-display text-[clamp(28px,3.5vw,44px)] tracking-[0.02em] text-text leading-[1.05] mt-2">
+          What a Difference a Great Contractor Makes
+        </h2>
+        <blockquote class="text-lg italic text-text-mid leading-[1.6] border-l-4 border-green pl-5 my-5 m-0">
+          &ldquo;The crew did exceptional work from start to finish. My neighbors kept stopping to say something — they noticed the clean worksite as much as the finished result. The attention to detail was impressive.&rdquo;
+        </blockquote>
+        <p class="text-[13px] font-semibold text-green">&mdash; Sandra M., Homeowner · Renton, WA</p>
+        <p class="text-sm text-[#666666] leading-[1.7] mt-5">
+          Sandra came across Cascade Concrete after noticing a neighbor's project in progress. Her project included a widened driveway, new entry stairs, and a full concrete refresh. The result speaks for itself.
+        </p>
       </div>
-      <p class="text-white font-semibold text-sm mb-2">Google Rating · Cascade Concrete Co.</p>
-      <p class="text-text-muted text-xs">South King County, WA · Licensed & Insured</p>
+      <div>
+        <img
+          src="/images/mac_white-house_driveway_after01.jpg"
+          alt="Completed driveway and entry stair project — South King County"
+          class="w-full h-[380px] object-cover rounded-sm"
+          loading="lazy"
+        />
+        <p class="text-xs font-medium text-text-muted mt-2.5 text-center">
+          Completed driveway and entry stair project — South King County, WA
+        </p>
+      </div>
     </div>
   </section>
 
-  <section class="section-fade bg-bg py-16 md:py-20 px-4 sm:px-6 lg:px-16">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {
-        reviews.map(({ quote, reviewer, label }) => (
-          <article class="review-card">
-            <div class="flex gap-0.5 mb-3">
-              {Array.from({ length: 4 }).map(() => (
-                <Star size={16} color="#f59e0b" fill="#f59e0b" />
-              ))}
-              <Star size={16} color="#f59e0b" fill="none" />
-            </div>
-            <p class="text-text text-sm italic leading-relaxed mb-4">"{quote}"</p>
-            <p class="text-green font-semibold text-[13px]">{reviewer}</p>
-            <p class="text-text-muted text-[11px] mt-1">{label}</p>
-          </article>
-        ))
-      }
+  <section class="bg-white py-16 px-6">
+    <div class="max-w-[420px] mx-auto text-center">
+      <p class="font-display text-[96px] leading-none text-text">4.5</p>
+      <div class="flex justify-center gap-1 my-3">
+        {[1, 2, 3, 4].map(() => (
+          <Star size={24} fill="#f59e0b" color="#f59e0b" />
+        ))}
+        <Star size={24} fill="none" color="#f59e0b" />
+      </div>
+      <p class="text-sm text-text-muted">out of 5 · Google Reviews</p>
+      <p class="text-[13px] font-semibold text-text-mid mt-2">Cascade Concrete Co. · South King County, WA</p>
     </div>
   </section>
 
-  <section class="section-fade bg-surface py-12 px-4">
+  <section class="bg-surface py-20 px-6 md:px-16">
+    <div class="section-container grid grid-cols-1 lg:grid-cols-3 gap-6">
+      {reviews.map((review) => (
+        <div class="bg-white border border-border border-l-4 border-l-green p-7 rounded-sm flex flex-col">
+          <div class="flex gap-0.5 mb-3.5">
+            {[1, 2, 3, 4, 5].map(() => (
+              <Star size={15} fill="#f59e0b" color="#f59e0b" />
+            ))}
+          </div>
+          <p class="text-sm italic text-text-mid leading-[1.7] flex-grow">&ldquo;{review.quote}&rdquo;</p>
+          <p class="text-[13px] font-semibold text-text mt-4">{review.attribution}</p>
+          <p class="text-xs text-text-muted mt-1">{review.source}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-white py-16 px-6">
     <div class="max-w-[480px] mx-auto text-center">
-      <h3 class="text-white mb-3">Had a great experience with us?</h3>
-      <p class="text-text-muted text-sm mb-6">
-        We'd love to hear about it. Reviews on Google help other homeowners find us and help us keep
-        doing what we do.
+      <h3 class="font-display text-2xl tracking-[0.04em] text-text mb-3">Had a great experience?</h3>
+      <p class="text-sm text-text-mid leading-relaxed mb-6">
+        If the Cascade Concrete team completed work on your property, we'd appreciate hearing about your experience on Google.
       </p>
       <a
         href="https://www.google.com/maps"
         target="_blank"
         rel="noopener noreferrer"
-        class="btn-primary"
+        class="inline-block border border-green text-green text-[13px] font-semibold px-5 py-2 rounded-sm hover:bg-green hover:text-white transition-colors"
       >
         Leave a Review on Google
       </a>
     </div>
   </section>
 
-  <CtaStrip />
+  <CtaBand />
 </BaseLayout>

@@ -1,0 +1,198 @@
+---
+interface Props {
+  variant?: 'dark' | 'light';
+}
+
+const { variant = 'dark' } = Astro.props;
+const isDark = variant === 'dark';
+
+const inputClass = isDark
+  ? 'w-full bg-white/[0.07] border border-white/15 text-white placeholder:text-white/30 focus:border-green focus:outline-none px-3.5 py-2.5 rounded-sm text-sm'
+  : 'w-full bg-bg border border-border text-text placeholder:text-text-muted focus:border-green focus:outline-none px-3.5 py-2.5 rounded-sm text-sm';
+
+const labelClass = isDark
+  ? 'block text-[11px] font-semibold uppercase tracking-[0.08em] text-white/45 mb-1.5'
+  : 'block text-[11px] font-semibold uppercase tracking-[0.08em] text-text-muted mb-1.5';
+---
+
+{isDark ? (
+<section class="bg-navy py-20 md:py-24 px-6 md:px-16">
+  <div class="section-container grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16">
+    {isDark && (
+      <div>
+        <p class="eyebrow">Get an Estimate</p>
+        <h2 class="font-display text-white text-[clamp(32px,4vw,48px)] tracking-[0.02em] leading-none mt-2 mb-4">
+          Request a Free Estimate
+        </h2>
+        <p class="text-sm text-white/60 leading-[1.65] mb-7">
+          Have a driveway, patio, retaining wall, slab, or excavation project in mind? Send the details and we'll follow up with next steps.
+        </p>
+        <ul class="flex flex-col gap-2.5">
+          {[
+            'No-obligation estimates',
+            'Licensed, bonded & insured',
+            'Serving Auburn & South King County',
+            'Washington State licensed',
+          ].map((item) => (
+            <li class="flex items-center gap-2.5 text-[13px] text-white/70">
+              <span class="w-1.5 h-1.5 rounded-full bg-green flex-shrink-0"></span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+
+    <form
+      name="cascade-estimate"
+      method="POST"
+      action="/thank-you/"
+      netlify
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      class="flex flex-col gap-3.5"
+    >
+      <input type="hidden" name="form-name" value="cascade-estimate" />
+      <p class="hidden">
+        <label>Don't fill this out: <input name="bot-field" /></label>
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+        <div>
+          <label class={labelClass} for="name">Name *</label>
+          <input class={inputClass} type="text" id="name" name="name" required />
+        </div>
+        <div>
+          <label class={labelClass} for="phone">Phone *</label>
+          <input class={inputClass} type="tel" id="phone" name="phone" required />
+        </div>
+      </div>
+
+      <div>
+        <label class={labelClass} for="email">Email</label>
+        <input class={inputClass} type="email" id="email" name="email" />
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+        <div>
+          <label class={labelClass} for="city">City</label>
+          <input class={inputClass} type="text" id="city" name="city" />
+        </div>
+        <div>
+          <label class={labelClass} for="project-type">Project Type</label>
+          <select class={inputClass} id="project-type" name="project-type">
+            <option value="">Please select</option>
+            <option value="Driveway">Driveway</option>
+            <option value="Patio">Patio</option>
+            <option value="Retaining Wall">Retaining Wall</option>
+            <option value="Foundation / Slab">Foundation / Slab</option>
+            <option value="Demolition & Removal">Demolition &amp; Removal</option>
+            <option value="Excavation">Excavation</option>
+            <option value="Multiple services">Multiple services</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label class={labelClass} for="details">Project Details</label>
+        <textarea class={inputClass} id="details" name="details" rows={4}></textarea>
+      </div>
+
+      <button
+        type="submit"
+        class="w-full bg-green text-white font-bold text-[13px] uppercase tracking-[0.08em] py-3 rounded-sm hover:bg-green-dark transition-colors"
+      >
+        Send Estimate Request
+      </button>
+    </form>
+  </div>
+</section>
+) : (
+  <form
+    name="cascade-estimate"
+    method="POST"
+    action="/thank-you/"
+    netlify
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+    class="flex flex-col gap-3.5"
+  >
+    <input type="hidden" name="form-name" value="cascade-estimate" />
+    <p class="hidden">
+      <label>Don't fill this out: <input name="bot-field" /></label>
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+      <div>
+        <label class={labelClass} for="contact-name">Name *</label>
+        <input class={inputClass} type="text" id="contact-name" name="name" required />
+      </div>
+      <div>
+        <label class={labelClass} for="contact-phone">Phone *</label>
+        <input class={inputClass} type="tel" id="contact-phone" name="phone" required />
+      </div>
+    </div>
+
+    <div>
+      <label class={labelClass} for="contact-email">Email</label>
+      <input class={inputClass} type="email" id="contact-email" name="email" />
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+      <div>
+        <label class={labelClass} for="contact-city">City</label>
+        <input class={inputClass} type="text" id="contact-city" name="city" />
+      </div>
+      <div>
+        <label class={labelClass} for="contact-project-type">Project Type</label>
+        <select class={inputClass} id="contact-project-type" name="project-type">
+          <option value="">Please select</option>
+          <option value="Driveway">Driveway</option>
+          <option value="Patio">Patio</option>
+          <option value="Retaining Wall">Retaining Wall</option>
+          <option value="Foundation / Slab">Foundation / Slab</option>
+          <option value="Demolition & Removal">Demolition &amp; Removal</option>
+          <option value="Excavation">Excavation</option>
+          <option value="Multiple services">Multiple services</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+    </div>
+
+    <div>
+      <label class={labelClass} for="contact-details">Project Details</label>
+      <textarea class={inputClass} id="contact-details" name="details" rows={4}></textarea>
+    </div>
+
+    <button
+      type="submit"
+      class="w-full bg-green text-white font-bold text-[13px] uppercase tracking-[0.08em] py-3 rounded-sm hover:bg-green-dark transition-colors"
+    >
+      Send Estimate Request
+    </button>
+  </form>
+)}
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('form[name="cascade-estimate"]').forEach((form) => {
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const body = new URLSearchParams(formData).toString();
+
+        try {
+          await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body,
+          });
+          window.location.href = '/thank-you/';
+        } catch {
+          form.submit();
+        }
+      });
+    });
+  });
+</script>

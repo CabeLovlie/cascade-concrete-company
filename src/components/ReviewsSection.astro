@@ -1,0 +1,71 @@
+---
+import { Star } from '@lucide/astro';
+
+interface Review {
+  quote: string;
+  attribution: string;
+  source: string;
+}
+
+interface Props {
+  reviews?: Review[];
+  showGoogleLink?: boolean;
+}
+
+const defaultReviews: Review[] = [
+  {
+    quote: 'The crew did exceptional work from start to finish. My neighbors have been stopping to compliment the results — the attention to detail and the clean worksite really stood out.',
+    attribution: 'Sandra M. · Renton, WA',
+    source: 'Google Review · Driveway & Steps',
+  },
+  {
+    quote: 'From the very first walkthrough I could tell they knew exactly what they were doing. Proper footings, rebar throughout, clean drainage detail — and the pricing was more than fair.',
+    attribution: 'Kevin P. · Auburn, WA',
+    source: 'Google Review · Retaining Wall Project',
+  },
+  {
+    quote: 'Very professional, great communicators, and skilled at both prep and finish work. Reliable, efficient, and left the site spotless. My kid was sad when the crew left — that tells you everything.',
+    attribution: 'James E. · Auburn, WA',
+    source: 'Google Review · Concrete Flatwork',
+  },
+];
+
+const { reviews = defaultReviews, showGoogleLink = true } = Astro.props;
+---
+
+<section class="bg-white py-20 md:py-24 px-6 md:px-16">
+  <div class="section-container">
+    <div class="section-header">
+      <p class="eyebrow">Client Reviews</p>
+      <h2>Trusted by Homeowners Across South King County</h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      {reviews.map((review) => (
+        <div class="bg-white border border-border border-l-4 border-l-green p-7 rounded-sm flex flex-col">
+          <div class="flex gap-0.5 mb-3.5">
+            {[1, 2, 3, 4, 5].map(() => (
+              <Star size={15} fill="#f59e0b" color="#f59e0b" />
+            ))}
+          </div>
+          <p class="text-sm italic text-text-mid leading-[1.7] flex-grow">&ldquo;{review.quote}&rdquo;</p>
+          <p class="text-[13px] font-semibold text-text mt-4">{review.attribution}</p>
+          <p class="text-xs text-text-muted mt-1">{review.source}</p>
+        </div>
+      ))}
+    </div>
+
+    {showGoogleLink && (
+      <div class="text-center mt-10">
+        <a
+          href="https://www.google.com/maps"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block border border-green text-green text-[13px] font-semibold px-5 py-2 rounded-sm hover:bg-green hover:text-white transition-colors"
+        >
+          See all reviews on Google
+        </a>
+      </div>
+    )}
+  </div>
+</section>

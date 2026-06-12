@@ -2,16 +2,20 @@
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import Lightbox from '../components/Lightbox.astro';
+import StickyMobileCTA from '../components/StickyMobileCTA.astro';
 
 interface Props {
   title: string;
   description: string;
+  ogImage?: string;
+  mobileCta?: 'home' | 'inner' | false;
 }
 
-const { title, description } = Astro.props;
+const { title, description, ogImage = '/images/cascade_open_graph_preview.png', mobileCta = false } = Astro.props;
 const siteUrl = 'https://cascade-concrete-company.netlify.app';
-const pageTitle = `${title} | Cascade Concrete Co.`;
-const ogImage = `${siteUrl}/images/cascade_open_graph_preview.png`;
+const ogImageUrl = `${siteUrl}${ogImage}`;
+const canonicalUrl = `${siteUrl}${Astro.url.pathname}`;
 ---
 
 <!doctype html>
@@ -19,61 +23,46 @@ const ogImage = `${siteUrl}/images/cascade_open_graph_preview.png`;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{pageTitle}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={`${siteUrl}${Astro.url.pathname}`} />
+    <title>{title}</title>
+
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Cascade Concrete Co." />
-    <meta property="og:title" content={pageTitle} />
+    <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={`${siteUrl}${Astro.url.pathname}`} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter/X Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <!-- Canonical -->
+    <link rel="canonical" href={canonicalUrl} />
+
+    <link rel="icon" type="image/png" href="/images/cascade_open_graph_preview.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap"
       rel="stylesheet"
     />
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="be52a051-a37e-4c5b-a824-4dde4ad5edf7"></script>
   </head>
   <body>
-    <!-- Hidden form for Netlify Forms detection at build time -->
-    <form name="cascade-estimate" netlify netlify-honeypot="bot-field" hidden>
-      <input type="text" name="name" />
-      <input type="tel" name="phone" />
-      <input type="email" name="email" />
-      <select name="service"></select>
-      <input type="text" name="city" />
-      <textarea name="project"></textarea>
-    </form>
-
     <Nav />
-    <main>
+    {mobileCta && <StickyMobileCTA mode={mobileCta} />}
+    <main class:list={[{ 'main--inner-mobile-cta': mobileCta === 'inner' }]}>
       <slot />
     </main>
     <Footer />
-
-    <script>
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-      );
-
-      document.querySelectorAll('.section-fade').forEach((el) => observer.observe(el));
-
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        document.querySelectorAll('.section-fade').forEach((el) => el.classList.add('is-visible'));
-      }
-    </script>
+    <Lightbox />
   </body>
 </html>

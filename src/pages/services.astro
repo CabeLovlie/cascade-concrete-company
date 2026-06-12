@@ -1,130 +1,116 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageHero from '../components/PageHero.astro';
-import CtaStrip from '../components/CtaStrip.astro';
-import { Check } from '@lucide/astro';
+import CtaBand from '../components/CtaBand.astro';
 
 const services = [
-  {
-    title: 'Driveways',
-    image: '/images/mac_driveway_complete_02.webp',
-    bg: 'bg-bg',
-    imageLeft: true,
-    body: 'A new driveway is one of the highest-ROI improvements a homeowner can make. Cascade Concrete Co. handles the full job — demo of the existing slab, base prep, forming, pour, and finishing. Broom finish standard, exposed aggregate available. We work with residential driveways of all sizes across Auburn, Kent, and South King County.',
-    items: [
-      'New driveway pours',
-      'Driveway replacement & removal',
-      'Exposed aggregate finish',
-      'Apron repairs and extensions',
-    ],
-  },
-  {
-    title: 'Patios',
-    image: '/images/mac_patio_complete_01.jpg',
-    bg: 'bg-surface',
-    imageLeft: false,
-    body: 'A well-poured patio extends your living space and adds lasting value. We form and pour custom patios in plain broom finish or exposed aggregate, sized and shaped for your yard. Every pour includes proper base prep and control joints to resist cracking.',
-    items: [
-      'Plain broom-finished patios',
-      'Exposed aggregate patios',
-      'Custom shapes and sizes',
-      'Fire pit pads and outdoor slabs',
-    ],
-  },
-  {
-    title: 'Retaining Walls',
-    image: '/images/mac_before-after02.jpg',
-    bg: 'bg-bg',
-    imageLeft: true,
-    body: 'South King County properties deal with real grade changes. Cascade Concrete Co. builds structural concrete retaining walls that hold, not just look good. From short garden borders to full hillside retention, we engineer the wall for the load and soil conditions at your site.',
-    items: [
-      'Residential retaining walls',
-      'Tiered wall systems',
-      'Combination walls and driveways',
-      'Drainage consideration built in',
-    ],
-  },
-  {
-    title: 'Foundations & Slabs',
-    image: '/images/mac_foundation_complete01.jpg',
-    bg: 'bg-surface',
-    imageLeft: false,
-    body: "Shop pads, ADU foundations, barn slabs, garage floors — we pour them level, reinforced, and to spec. Whether you're building a new structure or adding to an existing property, we handle site prep through the finished slab.",
-    items: [
-      'Shop and garage slabs',
-      'ADU and outbuilding foundations',
-      'Barn and RV pad pours',
-      'Reinforced with rebar or wire mesh',
-    ],
-  },
-  {
-    title: 'Demo & Removal',
-    image: '/images/mac_working_03.jpg',
-    bg: 'bg-bg',
-    imageLeft: true,
-    body: "Old concrete doesn't just disappear. Cascade Concrete Co. handles full demo — breaking up existing slabs, steps, driveways, and walkways — then hauls away all the debris. Site is prepped and ready for the new pour with no second contractor needed.",
-    items: [
-      'Driveway and slab demolition',
-      'Step and walkway removal',
-      'Full debris haul-away',
-      'Site grading after demo',
-    ],
-  },
-  {
-    title: 'Excavation',
-    image: '/images/mac_slab_complete_01.jpg',
-    bg: 'bg-surface',
-    imageLeft: false,
-    body: 'We bring our own equipment to handle excavation, grading, and site prep in-house. That means no waiting on a separate sub, no scheduling delays, and one crew from start to finish.',
-    items: [
-      'Site grading and leveling',
-      'Excavation for foundations and pads',
-      'Trench work',
-      'Kubota equipment on-site',
-    ],
-  },
+ {
+ eyebrow: 'Driveways · Patios · Walkways',
+ title: 'Residential Concrete',
+ body: 'Flatwork is where most residential concrete projects start. Cascade Concrete Co. handles the full job — demo of the existing slab, excavation, base prep, forming, pour, and finishing. Broom finish standard, exposed aggregate available.',
+ items: ['New driveway pours', 'Patio installation', 'Walkways & front entries', 'Exposed aggregate finish', 'Step replacement'],
+ image: '/images/mac_driveway_complete_02.webp',
+ bg: 'bg-white',
+ id: 'residential',
+ },
+ {
+ eyebrow: 'Foundations · Slabs · Pads',
+ title: 'Structural Concrete',
+ body: 'Shop pads, ADU foundations, garage floors, and barn slabs poured to spec. We handle rebar placement, form setting, and finishing in-house — no subcontractors.',
+ items: ['Shop & garage slabs', 'ADU foundations', 'Barn & RV pads', 'Reinforced footings', 'Garage floor replacements'],
+ image: '/images/mac_foundation_complete01.jpg',
+ bg: 'bg-surface',
+ id: 'structural',
+ },
+ {
+ eyebrow: 'Demo · Grading · Excavation',
+ title: 'Site Prep & Excavation',
+ body: 'We bring our own equipment to every job. Demo, grading, and excavation handled with a clear schedule and consistent communication from start to finish.',
+ items: ['Concrete demolition & removal', 'Site grading & leveling', 'Excavation', 'Trench work', 'Base prep & compaction'],
+ image: '/images/mac_working_06.jpg',
+ bg: 'bg-white',
+ id: 'site-prep',
+ },
+ {
+ eyebrow: 'Structural Walls',
+ title: 'Retaining Walls',
+ body: 'South King County properties deal with real grade changes. Cascade Concrete Co. builds structural concrete retaining walls designed for the load and soil conditions at your specific site.',
+ items: ['Residential retaining walls', 'Tiered wall systems', 'Combination driveway & wall projects', 'Drainage consideration', 'High-grade finishing'],
+ image: '/images/mac_retaining_wall.webp',
+ bg: 'bg-surface',
+ id: 'retaining-walls',
+ },
+ {
+ eyebrow: 'Steps · Entries · Landings',
+ title: 'Steps & Stairs',
+ body: 'Entry steps, basement entries, and outdoor landings poured clean and level. We form and finish steps to match the existing architecture and site grade.',
+ items: ['Front entry steps', 'Basement entry steps', 'Garage entry landings', 'Step replacement & repair'],
+ image: '/images/mac_stairs_complete_01.jpg',
+ bg: 'bg-white',
+ },
+ {
+ eyebrow: 'Commercial & Municipal',
+ title: 'Commercial Work',
+ body: 'Sidewalks, commercial flatwork, and site concrete serving homeowners, property owners, and small commercial projects across South King County.',
+ items: ['Commercial sidewalks', 'Parking lot flatwork', 'ADA ramp installation', 'Site prep for commercial builds'],
+ image: '/images/mac_walkway_01.jpg',
+ bg: 'bg-surface',
+ },
 ];
 ---
 
 <BaseLayout
-  title="Services"
-  description="Concrete services from Cascade Concrete Co. — driveways, patios, retaining walls, foundations, demolition, and excavation. Full-service contractor in South King County, WA."
+ title="Concrete Services — Cascade Concrete Co."
+  description="Residential concrete, foundations, retaining walls & excavation in South King County, WA. Licensed, bonded & insured."
+ mobileCta="inner"
 >
-  <PageHero
-    image="/images/mac_working_02.jpg"
-    eyebrow="WHAT WE DO"
-    title="Our Services"
-    subtitle="From excavation to the finished pour — we handle every step in-house."
-  />
+ <section
+ class="page-hero"
+ style="background-image: linear-gradient(rgba(10,10,10,0.78), rgba(10,10,10,0.78)), url('/images/mac_working_04.jpg');"
+ >
+ <div>
+ <p class="eyebrow text-green">Services</p>
+ <h1>Concrete &amp; Site Work Services</h1>
+ <p>Licensed, bonded, and insured. Serving Auburn and South King County.</p>
+ </div>
+ </section>
 
-  {
-    services.map(({ title, image, bg, imageLeft, body, items }) => (
-      <section class={`section-fade ${bg} py-16 md:py-20 px-4 sm:px-6 lg:px-16`}>
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          <div class:list={[imageLeft ? 'lg:order-1' : 'lg:order-2']}>
-            <img
-              src={image}
-              alt={title}
-              class="w-full h-[320px] md:h-[400px] object-cover border border-border"
-              loading="lazy"
-            />
-          </div>
-          <div class:list={[imageLeft ? 'lg:order-2' : 'lg:order-1']}>
-            <h2 class="text-white mb-4">{title}</h2>
-            <p class="text-text-muted text-sm leading-relaxed mb-6">{body}</p>
-            <ul class="space-y-3">
-              {items.map((item) => (
-                <li class="flex items-start gap-3 text-sm text-text">
-                  <Check size={18} class="text-green shrink-0 mt-0.5" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-    ))
-  }
+ {services.map((service, i) => (
+ <section id={service.id} class={`${service.bg} py-20 px-6 md:px-16`}>
+ <div class="section-container grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+ {i % 2 === 0 ? (
+ <>
+ <img src={service.image} alt={service.title} class="w-full h-[360px] object-cover rounded-sm" loading="lazy" />
+ <div>
+ <p class="eyebrow">{service.eyebrow}</p>
+ <h2 class="font-display text-[clamp(28px,3.5vw,42px)] tracking-[0.02em] text-text mt-2 mb-4">{service.title}</h2>
+ <p class="text-[15px] text-text-mid leading-[1.7] mb-5">{service.body}</p>
+ <ul class="space-y-2 mb-6">
+ {service.items.map((item) => (
+ <li class="text-sm text-text-mid"><span class="text-green mr-2">—</span>{item}</li>
+ ))}
+ </ul>
+ <a href="/contact" class="text-[13px] font-semibold text-green hover:text-green-dark transition-colors">Request an Estimate →</a>
+ </div>
+ </>
+ ) : (
+ <>
+ <div class="md:order-1">
+ <p class="eyebrow">{service.eyebrow}</p>
+ <h2 class="font-display text-[clamp(28px,3.5vw,42px)] tracking-[0.02em] text-text mt-2 mb-4">{service.title}</h2>
+ <p class="text-[15px] text-text-mid leading-[1.7] mb-5">{service.body}</p>
+ <ul class="space-y-2 mb-6">
+ {service.items.map((item) => (
+ <li class="text-sm text-text-mid"><span class="text-green mr-2">—</span>{item}</li>
+ ))}
+ </ul>
+ <a href="/contact" class="text-[13px] font-semibold text-green hover:text-green-dark transition-colors">Request an Estimate →</a>
+ </div>
+ <img src={service.image} alt={service.title} class="w-full h-[360px] object-cover rounded-sm md:order-2" loading="lazy" />
+ </>
+ )}
+ </div>
+ </section>
+ ))}
 
-  <CtaStrip />
+ <CtaBand />
 </BaseLayout>

@@ -1,0 +1,170 @@
+<!-- Lightbox overlay -->
+<div id="lightbox" style="
+ display: none;
+ position: fixed;
+ inset: 0;
+ background: rgba(0,0,0,0.93);
+ z-index: 1000;
+ align-items: center;
+ justify-content: center;
+">
+
+ <!-- Close button -->
+ <button id="lightbox-close" aria-label="Close" style="
+ position: absolute;
+ top: 20px;
+ right: 24px;
+ background: none;
+ border: none;
+ color: white;
+ font-size: 32px;
+ cursor: pointer;
+ line-height: 1;
+ opacity: 0.7;
+ z-index: 10;
+ ">×</button>
+
+ <!-- Prev arrow -->
+ <button id="lightbox-prev" aria-label="Previous" style="
+ position: absolute;
+ left: 20px;
+ top: 50%;
+ transform: translateY(-50%);
+ background: rgba(255,255,255,0.1);
+ border: 1px solid rgba(255,255,255,0.2);
+ color: white;
+ width: 48px;
+ height: 48px;
+ border-radius: 2px;
+ font-size: 22px;
+ cursor: pointer;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ z-index: 10;
+ transition: background 0.2s;
+ ">&#8592;</button>
+
+ <!-- Next arrow -->
+ <button id="lightbox-next" aria-label="Next" style="
+ position: absolute;
+ right: 20px;
+ top: 50%;
+ transform: translateY(-50%);
+ background: rgba(255,255,255,0.1);
+ border: 1px solid rgba(255,255,255,0.2);
+ color: white;
+ width: 48px;
+ height: 48px;
+ border-radius: 2px;
+ font-size: 22px;
+ cursor: pointer;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ z-index: 10;
+ transition: background 0.2s;
+ ">&#8594;</button>
+
+ <!-- Image container -->
+ <div style="
+ max-width: 90vw;
+ max-height: 88vh;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ gap: 14px;
+ ">
+ <img id="lightbox-img" src="" alt="" style="
+ max-width: 90vw;
+ max-height: 80vh;
+ object-fit: contain;
+ display: block;
+ border-radius: 2px;
+ " />
+ <p id="lightbox-caption" style="
+ font-family: 'Inter', sans-serif;
+ font-size: 12px;
+ font-weight: 600;
+ color: rgba(255,255,255,0.55);
+ letter-spacing: 0.08em;
+ text-transform: uppercase;
+ text-align: center;
+ margin: 0;
+ "></p>
+ </div>
+
+</div>
+
+<script is:inline>
+ const lightbox = document.getElementById('lightbox');
+ const lightboxImg = document.getElementById('lightbox-img');
+ const lightboxCaption = document.getElementById('lightbox-caption');
+ const closeBtn = document.getElementById('lightbox-close');
+ const prevBtn = document.getElementById('lightbox-prev');
+ const nextBtn = document.getElementById('lightbox-next');
+
+ let images = [];
+ let currentIndex = 0;
+
+ function openLightbox(index) {
+ currentIndex = index;
+ const item = images[currentIndex];
+ lightboxImg.src = item.src;
+ lightboxImg.alt = item.caption;
+ lightboxCaption.textContent = item.caption;
+ lightbox.style.display = 'flex';
+ document.body.style.overflow = 'hidden';
+ }
+
+ function closeLightbox() {
+ lightbox.style.display = 'none';
+ document.body.style.overflow = '';
+ }
+
+ function showPrev() {
+ currentIndex = (currentIndex - 1 + images.length) % images.length;
+ openLightbox(currentIndex);
+ }
+
+ function showNext() {
+ currentIndex = (currentIndex + 1) % images.length;
+ openLightbox(currentIndex);
+ }
+
+ function initLightbox() {
+ const triggers = document.querySelectorAll('[data-lightbox]');
+ images = Array.from(triggers).map(el => ({
+ src: el.dataset.src,
+ caption: el.dataset.caption || ''
+ }));
+
+ triggers.forEach((el, i) => {
+ el.style.cursor = 'pointer';
+ el.addEventListener('click', () => openLightbox(i));
+ });
+ }
+
+ closeBtn.addEventListener('click', closeLightbox);
+ prevBtn.addEventListener('click', showPrev);
+ nextBtn.addEventListener('click', showNext);
+
+ lightbox.addEventListener('click', (e) => {
+ if (e.target === lightbox) closeLightbox();
+ });
+
+ document.addEventListener('keydown', (e) => {
+ if (lightbox.style.display === 'flex') {
+ if (e.key === 'Escape') closeLightbox();
+ if (e.key === 'ArrowLeft') showPrev();
+ if (e.key === 'ArrowRight') showNext();
+ }
+ });
+
+ prevBtn.addEventListener('mouseenter', () => prevBtn.style.background = 'rgba(255,255,255,0.2)');
+ prevBtn.addEventListener('mouseleave', () => prevBtn.style.background = 'rgba(255,255,255,0.1)');
+ nextBtn.addEventListener('mouseenter', () => nextBtn.style.background = 'rgba(255,255,255,0.2)');
+ nextBtn.addEventListener('mouseleave', () => nextBtn.style.background = 'rgba(255,255,255,0.1)');
+
+ document.addEventListener('DOMContentLoaded', initLightbox);
+</script>

@@ -1,65 +1,74 @@
 ---
 import FacebookIcon from './FacebookIcon.astro';
-import InstagramIcon from './InstagramIcon.astro';
 ---
 
-<footer class="bg-navy border-t-2 border-green">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 py-12">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+<footer class="bg-charcoal text-white">
+  <div class="max-w-content mx-auto px-6 md:px-16 py-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
       <div>
-        <span class="font-bold tracking-tight text-xl leading-none text-text block mb-4">CASCADE CONCRETE <span class="font-normal">Co.</span></span>
-        <p class="text-text font-semibold text-sm mb-1">Cascade Concrete Co.</p>
-        <p class="text-text-muted text-sm">South King County, WA · Licensed · Bonded · Insured</p>
+        <p class="mb-4">
+          <span class="font-bold tracking-tight text-xl leading-none text-white">CASCADE CONCRETE <span class="font-normal">Co.</span></span>
+        </p>
+        <p class="text-[13px] text-white/45 leading-[1.65] mb-4">
+          Licensed concrete and excavation contractor serving Auburn and South King County. Driveways, foundations, retaining walls, slabs, demo, and site prep.
+        </p>
+        <p class="text-xs text-white/40">Licensed · Bonded · Insured</p>
       </div>
 
-      <div class="flex flex-col items-start md:items-end">
-        <a
-          href="tel:+12535550182"
-          class="font-mono text-green text-2xl md:text-3xl font-bold mb-4 hover:text-green-dark transition-colors"
-        >
-          (253) 555-0182
-        </a>
-        <div class="flex flex-wrap gap-x-4 gap-y-2 text-sm text-text-muted mb-4">
-          <a href="/services" class="hover:text-green transition-colors">Services</a>
-          <span>·</span>
-          <a href="/work" class="hover:text-green transition-colors">Our Work</a>
-          <span>·</span>
-          <a href="/reviews" class="hover:text-green transition-colors">Reviews</a>
-          <span>·</span>
-          <a href="/contact" class="hover:text-green transition-colors">Contact</a>
-        </div>
-        <div class="flex items-center gap-4">
-          <a
-            href="https://www.facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex items-center gap-2 text-text-muted text-sm hover:text-green transition-colors"
-            aria-label="Facebook"
-          >
-            <FacebookIcon size={18} />
-            Facebook
-          </a>
-          <a
-            href="https://www.instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex items-center gap-2 text-text-muted text-sm hover:text-green transition-colors"
-            aria-label="Instagram"
-          >
-            <InstagramIcon size={18} />
-            Instagram
-          </a>
-        </div>
+      <div>
+        <h4 class="text-[10px] font-bold uppercase tracking-[0.14em] text-white/35 mb-4">Services</h4>
+        <ul class="space-y-2">
+          <li><a href="/services" class="text-[13px] text-white/55 hover:text-white transition-colors">Residential Concrete</a></li>
+          <li><a href="/services" class="text-[13px] text-white/55 hover:text-white transition-colors">Foundations &amp; Slabs</a></li>
+          <li><a href="/services" class="text-[13px] text-white/55 hover:text-white transition-colors">Retaining Walls</a></li>
+          <li><a href="/services" class="text-[13px] text-white/55 hover:text-white transition-colors">Excavation &amp; Demo</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-[10px] font-bold uppercase tracking-[0.14em] text-white/35 mb-4">Company</h4>
+        <ul class="space-y-2">
+          <li><a href="/work" class="text-[13px] text-white/55 hover:text-white transition-colors">Our Work</a></li>
+          <li><a href="/reviews" class="text-[13px] text-white/55 hover:text-white transition-colors">Reviews</a></li>
+          <li><a href="/#service-area" class="text-[13px] text-white/55 hover:text-white transition-colors">Service Area</a></li>
+          <li><a href="/contact" class="text-[13px] text-white/55 hover:text-white transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-[10px] font-bold uppercase tracking-[0.14em] text-white/35 mb-4">Contact</h4>
+        <ul class="space-y-3">
+          <li>
+            <a href="tel:+12535550182" class="font-mono text-sm text-white hover:text-green transition-colors">(253) 555-0182</a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-[13px] text-white/55 hover:text-white transition-colors" aria-label="Facebook">
+              <FacebookIcon size={18} />
+              Facebook
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-[13px] text-white/55 hover:text-white transition-colors" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+              Instagram
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
 
-    <div class="mt-10 pt-6 border-t border-border">
-      <p class="text-text-muted text-xs text-center md:text-left mb-2 italic">
-        Portfolio demo site by Cabe Lovlie · Does not represent an active business
+    <div class="border-t border-white/[0.08] mt-12 pt-5 flex flex-col gap-3">
+      <p class="text-xs text-white/35 italic text-center sm:text-left">
+        Portfolio demo by Cabriel Lovlie · Does not represent an active business
       </p>
-      <p class="text-text-muted text-xs text-center md:text-left">
-        © 2026 Cascade Concrete Co.
-      </p>
+      <div class="flex flex-col sm:flex-row justify-between gap-2 text-xs text-white/25">
+        <span>&copy; {new Date().getFullYear()} Cascade Concrete Co.</span>
+        <span>Licensed · Bonded · Insured</span>
+      </div>
     </div>
   </div>
 </footer>

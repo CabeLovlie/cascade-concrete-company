@@ -1,23 +1,30 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroHome from '../components/HeroHome.astro';
-import CredentialBar from '../components/CredentialBar.astro';
-import StatBlock from '../components/StatBlock.astro';
-import ServiceGrid from '../components/ServiceGrid.astro';
-import ReviewStrip from '../components/ReviewStrip.astro';
-import PullQuote from '../components/PullQuote.astro';
-import CtaStrip from '../components/CtaStrip.astro';
+import TrustBar from '../components/TrustBar.astro';
+import WhyChooseMac from '../components/WhyChooseMac.astro';
+import ServicesSection from '../components/ServicesSection.astro';
+import ProcessSection from '../components/ProcessSection.astro';
+import GalleryGrid from '../components/GalleryGrid.astro';
+import ReviewsSection from '../components/ReviewsSection.astro';
+import ServiceAreaSection from '../components/ServiceAreaSection.astro';
+import EstimateForm from '../components/EstimateForm.astro';
+import CtaBand from '../components/CtaBand.astro';
 ---
 
 <BaseLayout
-  title="Home"
-  description="Cascade Concrete Co. — licensed concrete and excavation contractor serving South King County. Driveways, patios, retaining walls, foundations, and more."
+  title="Cascade Concrete Co. — South King County, WA"
+  description="Licensed concrete contractor in South King County, WA. Driveways, patios, retaining walls, foundations & excavation."
+ mobileCta="home"
 >
-  <HeroHome />
-  <CredentialBar />
-  <StatBlock />
-  <ServiceGrid />
-  <ReviewStrip />
-  <PullQuote />
-  <CtaStrip />
+ <HeroHome />
+ <TrustBar />
+ <WhyChooseMac />
+ <ServicesSection />
+ <ProcessSection />
+ <GalleryGrid />
+ <ReviewsSection />
+ <ServiceAreaSection />
+ <EstimateForm />
+ <CtaBand />
 </BaseLayout>

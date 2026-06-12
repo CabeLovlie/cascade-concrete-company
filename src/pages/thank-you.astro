@@ -1,20 +1,183 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { CheckCircle } from '@lucide/astro';
 ---
 
 <BaseLayout
-  title="Thank You"
-  description="Thank you for contacting Cascade Concrete Co. We'll be in touch within 1 business day."
+ title="Request Received — Cascade Concrete Co."
+ description="Your estimate request has been received. Cascade Concrete Co. will follow up within 1 business day."
 >
-  <section class="py-32 px-4 text-center">
-    <div class="max-w-lg mx-auto">
-      <h1 class="text-white mb-4">We Got It.</h1>
-      <p class="text-text-muted mb-8">
-        Thanks for reaching out. Our team will follow up within 1 business day.
-      </p>
-      <a href="/" class="text-green hover:text-green-dark transition-colors font-semibold">
-        ← Back to Home
-      </a>
-    </div>
-  </section>
+
+<section style="
+ background: #f5f4f0;
+ min-height: 80vh;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ padding: 80px 24px;
+">
+ <div style="
+ max-width: 560px;
+ width: 100%;
+ text-align: center;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ gap: 20px;
+ ">
+
+ <!-- Check icon -->
+ <div style="
+ width: 64px;
+ height: 64px;
+ background: #2db832;
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ flex-shrink: 0;
+ ">
+ <CheckCircle size={32} color="white" />
+ </div>
+
+ <!-- Heading -->
+ <h1 style="
+ font-family: 'Bebas Neue', sans-serif;
+ font-size: clamp(38px, 5vw, 56px);
+ color: #1a1a1a;
+ letter-spacing: 0.02em;
+ line-height: 1.0;
+ margin: 0;
+ ">Your Request Is In.</h1>
+
+ <!-- Body -->
+ <p style="
+ font-family: 'Inter', sans-serif;
+ font-size: 16px;
+ color: #666666;
+ line-height: 1.7;
+ margin: 0;
+ max-width: 440px;
+ ">
+      Thanks for reaching out to Cascade Concrete Co. Our team
+      will review your project details and follow up within
+ <strong style="color: #1a1a1a; font-weight: 600;">1 business day</strong>
+ with next steps.
+ </p>
+
+ <!-- Divider -->
+ <div style="width: 40px; height: 2px; background: #2db832;"></div>
+
+ <!-- What to expect -->
+ <div style="
+ background: #ffffff;
+ border: 1px solid #e0ddd6;
+ border-top: 3px solid #2db832;
+ border-radius: 2px;
+ padding: 28px 32px;
+ text-align: left;
+ width: 100%;
+ ">
+ <p style="
+ font-family: 'Inter', sans-serif;
+ font-size: 11px;
+ font-weight: 700;
+ text-transform: uppercase;
+ letter-spacing: 0.14em;
+ color: #888888;
+ margin: 0 0 16px 0;
+ ">What Happens Next</p>
+
+ <div style="display: flex; flex-direction: column; gap: 12px;">
+
+ <div style="display: flex; gap: 14px; align-items: flex-start;">
+ <div style="
+ width: 22px; height: 22px;
+ background: #2db832;
+ border-radius: 50%;
+ flex-shrink: 0;
+ display: flex; align-items: center; justify-content: center;
+ font-family: 'Bebas Neue', sans-serif;
+ font-size: 13px;
+ color: white;
+ margin-top: 1px;
+ ">1</div>
+ <div>
+ <p style="font-family:'Inter',sans-serif; font-size:14px; font-weight:600; color:#1a1a1a; margin:0 0 2px 0;">We review your project details</p>
+            <p style="font-family:'Inter',sans-serif; font-size:13px; color:#888888; margin:0; line-height:1.5;">Our team reviews every estimate request to understand the scope before reaching out.</p>
+ </div>
+ </div>
+
+ <div style="display: flex; gap: 14px; align-items: flex-start;">
+ <div style="
+ width: 22px; height: 22px;
+ background: #2db832;
+ border-radius: 50%;
+ flex-shrink: 0;
+ display: flex; align-items: center; justify-content: center;
+ font-family: 'Bebas Neue', sans-serif;
+ font-size: 13px;
+ color: white;
+ margin-top: 1px;
+ ">2</div>
+ <div>
+ <p style="font-family:'Inter',sans-serif; font-size:14px; font-weight:600; color:#1a1a1a; margin:0 0 2px 0;">We follow up within 1 business day</p>
+ <p style="font-family:'Inter',sans-serif; font-size:13px; color:#888888; margin:0; line-height:1.5;">Expect a call or email to confirm details and schedule a site visit if needed.</p>
+ </div>
+ </div>
+
+ <div style="display: flex; gap: 14px; align-items: flex-start;">
+ <div style="
+ width: 22px; height: 22px;
+ background: #2db832;
+ border-radius: 50%;
+ flex-shrink: 0;
+ display: flex; align-items: center; justify-content: center;
+ font-family: 'Bebas Neue', sans-serif;
+ font-size: 13px;
+ color: white;
+ margin-top: 1px;
+ ">3</div>
+ <div>
+ <p style="font-family:'Inter',sans-serif; font-size:14px; font-weight:600; color:#1a1a1a; margin:0 0 2px 0;">You receive a clear, itemized estimate</p>
+ <p style="font-family:'Inter',sans-serif; font-size:13px; color:#888888; margin:0; line-height:1.5;">No hidden charges. No pressure. Just honest pricing for the work you need done.</p>
+ </div>
+ </div>
+
+ </div>
+ </div>
+
+ <!-- Contact fallback -->
+ <p style="
+ font-family: 'Inter', sans-serif;
+ font-size: 13px;
+ color: #888888;
+ margin: 0;
+ line-height: 1.6;
+ ">
+ Need to reach us sooner? Call directly at
+ <a href="tel:+12535550182" style="
+ color: #2db832;
+ font-weight: 600;
+ text-decoration: none;
+ font-family: 'JetBrains Mono', monospace;
+ ">(253) 555-0182</a>
+ </p>
+
+ <!-- Back to home -->
+ <a href="/" style="
+ font-family: 'Inter', sans-serif;
+ font-size: 13px;
+ font-weight: 600;
+ color: #1a1a1a;
+ text-decoration: none;
+ display: inline-flex;
+ align-items: center;
+ gap: 6px;
+ opacity: 0.6;
+ ">← Back to Home</a>
+
+ </div>
+</section>
+
 </BaseLayout>

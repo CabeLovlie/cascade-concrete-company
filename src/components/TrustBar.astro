@@ -1,0 +1,26 @@
+---
+const items = [
+  { value: '4.5★', label: 'Google Rated', valueClass: 'text-[#f59e0b]' },
+  { value: '10+', label: 'Years in Business', valueClass: 'text-text' },
+  { value: 'Hundreds', label: 'Of Projects Completed', valueClass: 'text-green' },
+  { value: 'Fully', label: 'Insured', valueClass: 'text-green' },
+  { value: 'WA', label: 'Washington State Licensed', valueClass: 'font-mono text-[13px] text-text' },
+  { value: 'LBI', label: 'Licensed · Bonded · Insured', valueClass: 'text-text' },
+];
+---
+
+<section id="trust-bar" class="bg-white border-b-[3px] border-green shadow-[0_2px_12px_rgba(0,0,0,0.07)] py-4 px-6">
+  <div class="flex flex-wrap sm:flex-nowrap justify-center items-stretch max-w-content mx-auto">
+    {items.map((item, i) => (
+      <>
+        {i > 0 && (
+          <div class="hidden sm:block w-px bg-border self-stretch" aria-hidden="true"></div>
+        )}
+        <div class="flex flex-col items-center gap-0.5 px-4 sm:px-7 py-3 sm:py-0 w-1/2 sm:w-auto">
+          <span class={`font-display text-[22px] leading-none ${item.valueClass}`}>{item.value}</span>
+          <span class="text-[10px] font-semibold uppercase tracking-[0.1em] text-text-muted text-center">{item.label}</span>
+        </div>
+      </>
+    ))}
+  </div>
+</section>

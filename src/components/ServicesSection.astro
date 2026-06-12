@@ -1,0 +1,68 @@
+---
+const services = [
+ {
+ title: 'Residential Concrete',
+ href: '/services#residential',
+ description: 'Flatwork and finish work for residential properties. Plain, broom-finished, and exposed aggregate.',
+ items: ['Driveways', 'Patios', 'Walkways & steps', 'Exposed aggregate', 'Broom finish'],
+ },
+ {
+ title: 'Structural Concrete',
+ href: '/services#structural',
+ description: 'Foundations, slabs, and structural pours built to spec with rebar and proper drainage.',
+ items: ['Foundations', 'Shop & garage slabs', 'ADU pads', 'Barn & RV pads', 'Reinforced footings'],
+ },
+ {
+ title: 'Site Prep & Excavation',
+ href: '/services#site-prep',
+ description: 'In-house equipment for demo, grading, and site prep — coordinated start to finish.',
+ items: ['Demolition & removal', 'Grading & leveling', 'Excavation', 'Trench work', 'Base compaction'],
+ },
+ {
+ title: 'Retaining Walls',
+ href: '/services#retaining-walls',
+ description: "Structural concrete walls engineered for South King County's terrain and soil conditions.",
+ items: ['Retaining walls', 'Tiered wall systems', 'Drainage integration', 'Combination projects', 'Outdoor flatwork'],
+ },
+];
+---
+
+<section class="bg-surface py-20 md:py-24 px-6 md:px-16">
+ <div class="section-container">
+ <div class="section-header">
+ <p class="eyebrow">What We Do</p>
+ <h2>Concrete &amp; Site Work Services</h2>
+ <p>From residential driveways to site prep and excavation — coordinated from estimate through cleanup.</p>
+ </div>
+
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+ {services.map((service) => (
+ <a
+ href={service.href}
+ class="service-card bg-white border border-border border-t-[3px] border-t-green p-7 rounded-sm"
+ style="text-decoration: none; color: inherit; display: block;"
+ >
+ <h3 class="font-display text-xl tracking-[0.04em] text-text mb-3">{service.title}</h3>
+ <p class="text-sm text-[#666666] leading-relaxed mb-4">{service.description}</p>
+ <ul class="space-y-1.5">
+ {service.items.map((item) => (
+ <li class="text-[13px] text-text-mid">
+ <span class="text-green mr-2">—</span>{item}
+ </li>
+ ))}
+ </ul>
+ </a>
+ ))}
+ </div>
+ </div>
+</section>
+
+<style>
+ .service-card {
+ transition: box-shadow 0.2s ease, transform 0.2s ease;
+ }
+ .service-card:hover {
+ box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+ transform: translateY(-2px);
+ }
+</style>

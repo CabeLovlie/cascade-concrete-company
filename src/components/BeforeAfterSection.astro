@@ -1,0 +1,134 @@
+---
+interface Pair {
+ before: string;
+ after: string;
+ caption: string;
+}
+
+interface Props {
+ showHeader?: boolean;
+ extraPairs?: Pair[];
+ layout?: 'default' | 'work';
+}
+
+const defaultPairs: Pair[] = [
+ {
+ before: '/images/mac_brick_before01.webp',
+ after: '/images/mac_brick_after01.webp',
+ caption: 'Driveway Replacement — Brick Colonial, Seattle, WA',
+ },
+ {
+ before: '/images/mac_dark-blue_before01.webp',
+ after: '/images/mac_dark-blue_after01.webp',
+ caption: 'Retaining Wall & Driveway — South King County',
+ },
+ {
+ before: '/images/mac_blue-house_before01.webp',
+ after: '/images/mac_blue-house_after01.webp',
+ caption: 'Walkway Replacement — Seattle, WA',
+ },
+];
+
+const { showHeader = true, extraPairs = [], layout = 'default' } = Astro.props;
+const pairs = [...extraPairs, ...defaultPairs];
+const isWorkLayout = layout === 'work';
+---
+
+<section class="bg-surface py-20 md:py-24 px-6 md:px-16">
+ <div class="section-container">
+ {showHeader && (
+ <div class="section-header">
+ <p class="eyebrow">Before &amp; After</p>
+ <h2>The Work Speaks for Itself</h2>
+ <p>Real projects. Real results. Before-and-after photos from residential jobs across Auburn and South King County.</p>
+ </div>
+ )}
+
+ <div class={isWorkLayout ? 'ba-grid-work' : 'grid grid-cols-1 lg:grid-cols-3 gap-6'}>
+ {pairs.map((pair) => (
+ <div
+ class={isWorkLayout ? 'ba-card-work bg-white border border-border-mid rounded-sm overflow-hidden' : 'bg-white border border-border-mid rounded-sm overflow-hidden'}
+ data-lightbox={isWorkLayout ? 'true' : undefined}
+ data-src={isWorkLayout ? pair.after : undefined}
+ data-caption={isWorkLayout ? pair.caption : undefined}
+ style={isWorkLayout ? 'cursor: pointer;' : undefined}
+ >
+ <div class={isWorkLayout ? 'ba-images flex' : 'flex'}>
+ <div class="relative w-1/2">
+ <span class="absolute top-0 left-0 z-10 bg-text text-white text-[10px] font-bold uppercase tracking-[0.1em] px-2.5 py-1">Before</span>
+ <img
+ src={pair.before}
+ alt="Before"
+ class={isWorkLayout ? 'w-full h-full object-cover object-center' : 'w-full h-[260px] object-cover object-center'}
+ loading="lazy"
+ />
+ </div>
+ <div class="relative w-1/2 after-img-wrap overflow-hidden">
+ <span class="absolute top-0 left-0 z-10 bg-green text-white text-[10px] font-bold uppercase tracking-[0.1em] px-2.5 py-1">After</span>
+ <img
+ src={pair.after}
+ alt="After"
+ class={isWorkLayout ? 'w-full h-full object-cover object-center' : 'w-full h-[260px] object-cover object-center'}
+ loading="lazy"
+ />
+ </div>
+ </div>
+ <div class="px-4 py-3 border-t border-border">
+ <p class="text-[13px] font-semibold text-text">{pair.caption}</p>
+ </div>
+ </div>
+ ))}
+ </div>
+ </div>
+</section>
+
+<style>
+ .after-img-wrap {
+ position: relative;
+ }
+ .after-img-wrap::after {
+    content: 'Cascade Concrete Co.';
+ position: absolute;
+ bottom: 8px;
+ right: 10px;
+ font-family: 'Inter', sans-serif;
+ font-size: 9px;
+ font-weight: 600;
+ letter-spacing: 0.06em;
+ color: rgba(255, 255, 255, 0.65);
+ text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+ pointer-events: none;
+ white-space: nowrap;
+ }
+</style>
+
+{isWorkLayout && (
+ <style>
+ .ba-grid-work {
+ display: grid;
+ grid-template-columns: repeat(2, 1fr);
+ gap: 20px;
+ }
+
+ @media (max-width: 768px) {
+ .ba-grid-work {
+ grid-template-columns: 1fr;
+ }
+ }
+
+ .ba-card-work {
+ height: 420px;
+ display: flex;
+ flex-direction: column;
+ }
+
+ .ba-card-work .ba-images {
+ flex: 1;
+ min-height: 0;
+ }
+
+ .ba-card-work .ba-images > div {
+ height: 100%;
+ }
+ </style>
+)}

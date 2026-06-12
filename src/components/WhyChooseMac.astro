@@ -1,0 +1,54 @@
+---
+import { Check } from '@lucide/astro';
+
+const items = [
+  {
+    title: 'Licensed, Bonded & Insured in Washington',
+    detail: 'Washington State licensed — active, bonded, and fully insured.',
+  },
+  {
+    title: 'Proper Base Prep for Long-Term Durability',
+    detail: 'Every pour starts with the right foundation — compacted base, correct grading, and rebar where it counts.',
+  },
+  {
+    title: 'Concrete, Demo & Excavation In-House',
+    detail: 'From site clearing and demolition through the finished pour — coordinated start to finish.',
+  },
+  {
+    title: 'Clear Estimates & Consistent Communication',
+    detail: 'Straightforward pricing, no hidden charges, and a contractor who answers the phone.',
+  },
+  {
+    title: 'Local Experience with South King County Properties',
+    detail: '10+ years working with the terrain, soil conditions, and property types across Auburn and the surrounding area.',
+  },
+];
+---
+
+<section class="bg-white py-20 md:py-24 px-6 md:px-16">
+  <div class="section-container grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+    <div>
+      <p class="eyebrow">Why Choose Us</p>
+      <h2 class="font-display text-[clamp(32px,4vw,52px)] tracking-[0.02em] text-text leading-[1.05] mt-2">
+        Concrete Done Right,<br />From the Ground Up
+      </h2>
+      <p class="text-[15px] text-[#666666] leading-[1.7] mt-4">
+        Cascade Concrete Co. brings over 10 years of hands-on experience to every residential and commercial project in Auburn and South King County. From base prep to final finish, every job is handled with the same attention to detail and clear communication.
+      </p>
+    </div>
+
+    <ul class="list-none p-0 m-0">
+      {items.map((item, i) => (
+        <li class={`flex gap-3.5 items-start ${i < items.length - 1 ? 'pb-[18px] mb-[18px] border-b border-surface' : ''}`}>
+          <span class="w-7 h-7 bg-green rounded-sm flex-shrink-0 flex items-center justify-center">
+            <Check size={14} color="white" />
+          </span>
+          <div>
+            <p class="text-sm font-semibold text-text">{item.title}</p>
+            <p class="text-[13px] text-text-muted leading-normal mt-0.5">{item.detail}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
