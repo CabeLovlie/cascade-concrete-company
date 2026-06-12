@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import BeforeAfterSection from '../components/BeforeAfterSection.astro';
 import GalleryGrid from '../components/GalleryGrid.astro';
 import CtaBand from '../components/CtaBand.astro';
 
@@ -22,7 +21,7 @@ const allGalleryItems = [
 
 <BaseLayout
  title="Our Work — Cascade Concrete Co."
- description="Before-and-after project photos from Cascade Concrete Co. — driveways, retaining walls, patios, and slabs across South King County."
+  description="Project photos from Cascade Concrete Co. — driveways, retaining walls, patios, and slabs across South King County."
  ogImage="/images/cascade_open_graph_preview.png"
  mobileCta="inner"
 >
@@ -36,17 +35,6 @@ const allGalleryItems = [
       <p>Real jobs, real results. Every project completed by the Cascade Concrete team.</p>
  </div>
  </section>
-
- <BeforeAfterSection
- layout="work"
- extraPairs={[
- {
- before: '/images/mac_white-house_driveway_before01.jpg',
- after: '/images/mac_white-house_driveway_after01.jpg',
- caption: 'Driveway Replacement — White House, Seattle, WA',
- },
- ]}
- />
 
  <GalleryGrid
  eyebrow="All Project Photos"
