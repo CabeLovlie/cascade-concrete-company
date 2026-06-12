@@ -1,0 +1,22 @@
+---
+interface Props {
+  image: string;
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  overlay?: string;
+}
+
+const { image, eyebrow, title, subtitle, overlay = 'rgba(13,17,23,0.80)' } = Astro.props;
+---
+
+<section
+  class="relative h-[280px] flex items-center justify-center bg-cover bg-center"
+  style={`background-image: linear-gradient(${overlay}, ${overlay}), url('${image}');`}
+>
+  <div class="text-center px-4 max-w-2xl">
+    <p class="eyebrow mb-3">{eyebrow}</p>
+    <h1 class="text-white text-[44px] md:text-[56px] mb-3">{title}</h1>
+    <p class="text-text-muted text-base">{subtitle}</p>
+  </div>
+</section>

@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaStrip from '../components/CtaStrip.astro';
+
+const gallery = [
+  { src: '/images/mac_driveway_complete_01.jpg', caption: 'Driveway Replacement · South King County, WA', alt: 'Completed concrete driveway project' },
+  { src: '/images/mac_driveway_complete_02.webp', caption: 'New Driveway Pour · South King County', alt: 'New concrete driveway pour' },
+  { src: '/images/mac_patio_complete_01.jpg', caption: 'Exposed Aggregate Patio', alt: 'Exposed aggregate concrete patio' },
+  { src: '/images/mac_patio_complete_02.jpg', caption: 'Broom Finish Patio · Kent, WA', alt: 'Broom-finished concrete patio' },
+  { src: '/images/mac_patio_complete_03.webp', caption: 'Patio & Walkway Combo', alt: 'Concrete patio and walkway combo' },
+  { src: '/images/mac_stairs_complete_01.jpg', caption: 'Entry Steps · Seattle, WA', alt: 'Concrete entry steps installation' },
+  { src: '/images/mac_stairs_complete_02.jpg', caption: 'Basement Entry Steps', alt: 'Basement entry concrete steps' },
+  { src: '/images/mac_walkway_complete_03.jpg', caption: 'New Walkway Pour', alt: 'New concrete walkway pour' },
+  { src: '/images/mac_walkway_repair_01.jpg', caption: 'Walkway Repair & Panel Replacement', alt: 'Concrete walkway repair project' },
+  { src: '/images/mac_foundation_complete01.jpg', caption: 'Shop Slab Foundation', alt: 'Shop slab foundation pour' },
+  { src: '/images/mac_slab_complete_01.jpg', caption: 'Finished Slab · Ready for Structure', alt: 'Finished concrete slab' },
+  { src: '/images/mac_working_01.jpg', caption: 'Truck Pour · Large Slab Project', alt: 'Concrete truck pour on large slab' },
+  { src: '/images/mac_working_02.jpg', caption: 'Rebar Grid · Foundation Prep', alt: 'Rebar grid foundation preparation' },
+  { src: '/images/mac_working_03.jpg', caption: 'Excavation · Site Prep', alt: 'Excavation and site preparation' },
+];
+---
+
+<BaseLayout
+  title="Our Work"
+  description="Project gallery from Cascade Concrete Co. — real driveways, patios, stairs, foundations, and excavation work across South King County."
+>
+  <PageHero
+    image="/images/mac_slab_complete_01.jpg"
+    eyebrow="PROJECT GALLERY"
+    title="Our Work"
+    subtitle="Real jobs, real results. Every project poured by the Cascade Concrete Co. crew."
+  />
+
+  <section class="section-fade bg-bg py-16 px-4 sm:px-6 lg:px-16">
+    <div class="max-w-7xl mx-auto columns-1 sm:columns-2 lg:columns-3 gap-4">
+      {
+        gallery.map(({ src, caption, alt }) => (
+          <figure class="relative mb-4 break-inside-avoid group overflow-hidden border border-border">
+            <img src={src} alt={alt} class="w-full object-cover block" loading="lazy" />
+            <figcaption class="absolute inset-0 flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="w-full bg-gradient-to-t from-bg/95 to-transparent p-4 pt-12">
+                <p class="text-white text-[13px] font-medium">{caption}</p>
+              </div>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </section>
+
+  <CtaStrip />
+</BaseLayout>

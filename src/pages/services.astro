@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaStrip from '../components/CtaStrip.astro';
+import { Check } from '@lucide/astro';
+
+const services = [
+  {
+    title: 'Driveways',
+    image: '/images/mac_driveway_complete_02.webp',
+    bg: 'bg-bg',
+    imageLeft: true,
+    body: 'A new driveway is one of the highest-ROI improvements a homeowner can make. Cascade Concrete Co. handles the full job — demo of the existing slab, base prep, forming, pour, and finishing. Broom finish standard, exposed aggregate available. We work with residential driveways of all sizes across Auburn, Kent, and South King County.',
+    items: [
+      'New driveway pours',
+      'Driveway replacement & removal',
+      'Exposed aggregate finish',
+      'Apron repairs and extensions',
+    ],
+  },
+  {
+    title: 'Patios',
+    image: '/images/mac_patio_complete_01.jpg',
+    bg: 'bg-surface',
+    imageLeft: false,
+    body: 'A well-poured patio extends your living space and adds lasting value. We form and pour custom patios in plain broom finish or exposed aggregate, sized and shaped for your yard. Every pour includes proper base prep and control joints to resist cracking.',
+    items: [
+      'Plain broom-finished patios',
+      'Exposed aggregate patios',
+      'Custom shapes and sizes',
+      'Fire pit pads and outdoor slabs',
+    ],
+  },
+  {
+    title: 'Retaining Walls',
+    image: '/images/mac_before-after02.jpg',
+    bg: 'bg-bg',
+    imageLeft: true,
+    body: 'South King County properties deal with real grade changes. Cascade Concrete Co. builds structural concrete retaining walls that hold, not just look good. From short garden borders to full hillside retention, we engineer the wall for the load and soil conditions at your site.',
+    items: [
+      'Residential retaining walls',
+      'Tiered wall systems',
+      'Combination walls and driveways',
+      'Drainage consideration built in',
+    ],
+  },
+  {
+    title: 'Foundations & Slabs',
+    image: '/images/mac_foundation_complete01.jpg',
+    bg: 'bg-surface',
+    imageLeft: false,
+    body: "Shop pads, ADU foundations, barn slabs, garage floors — we pour them level, reinforced, and to spec. Whether you're building a new structure or adding to an existing property, we handle site prep through the finished slab.",
+    items: [
+      'Shop and garage slabs',
+      'ADU and outbuilding foundations',
+      'Barn and RV pad pours',
+      'Reinforced with rebar or wire mesh',
+    ],
+  },
+  {
+    title: 'Demo & Removal',
+    image: '/images/mac_working_03.jpg',
+    bg: 'bg-bg',
+    imageLeft: true,
+    body: "Old concrete doesn't just disappear. Cascade Concrete Co. handles full demo — breaking up existing slabs, steps, driveways, and walkways — then hauls away all the debris. Site is prepped and ready for the new pour with no second contractor needed.",
+    items: [
+      'Driveway and slab demolition',
+      'Step and walkway removal',
+      'Full debris haul-away',
+      'Site grading after demo',
+    ],
+  },
+  {
+    title: 'Excavation',
+    image: '/images/mac_slab_complete_01.jpg',
+    bg: 'bg-surface',
+    imageLeft: false,
+    body: 'We bring our own equipment to handle excavation, grading, and site prep in-house. That means no waiting on a separate sub, no scheduling delays, and one crew from start to finish.',
+    items: [
+      'Site grading and leveling',
+      'Excavation for foundations and pads',
+      'Trench work',
+      'Kubota equipment on-site',
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Services"
+  description="Concrete services from Cascade Concrete Co. — driveways, patios, retaining walls, foundations, demolition, and excavation. Full-service contractor in South King County, WA."
+>
+  <PageHero
+    image="/images/mac_working_02.jpg"
+    eyebrow="WHAT WE DO"
+    title="Our Services"
+    subtitle="From excavation to the finished pour — we handle every step in-house."
+  />
+
+  {
+    services.map(({ title, image, bg, imageLeft, body, items }) => (
+      <section class={`section-fade ${bg} py-16 md:py-20 px-4 sm:px-6 lg:px-16`}>
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <div class:list={[imageLeft ? 'lg:order-1' : 'lg:order-2']}>
+            <img
+              src={image}
+              alt={title}
+              class="w-full h-[320px] md:h-[400px] object-cover border border-border"
+              loading="lazy"
+            />
+          </div>
+          <div class:list={[imageLeft ? 'lg:order-2' : 'lg:order-1']}>
+            <h2 class="text-white mb-4">{title}</h2>
+            <p class="text-text-muted text-sm leading-relaxed mb-6">{body}</p>
+            <ul class="space-y-3">
+              {items.map((item) => (
+                <li class="flex items-start gap-3 text-sm text-text">
+                  <Check size={18} class="text-green shrink-0 mt-0.5" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+    ))
+  }
+
+  <CtaStrip />
+</BaseLayout>

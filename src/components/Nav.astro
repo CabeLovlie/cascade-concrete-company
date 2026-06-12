@@ -1,0 +1,74 @@
+---
+import { Menu, X } from '@lucide/astro';
+---
+
+<nav class="sticky top-0 z-50 bg-navy border-b-2 border-green">
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 min-h-14 md:min-h-16 py-2" style="display:flex; flex-direction:row; align-items:center; justify-content:space-between;">
+    <a href="/" class="text-text shrink-0" style="text-decoration:none;">
+      <span class="font-bold tracking-tight text-xl leading-none text-text">CASCADE CONCRETE <span class="font-normal">Co.</span></span>
+    </a>
+
+    <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-8">
+      <a href="/services" class="text-text text-sm font-medium hover:text-green transition-colors">Services</a>
+      <a href="/work" class="text-text text-sm font-medium hover:text-green transition-colors">Our Work</a>
+      <a href="/reviews" class="text-text text-sm font-medium hover:text-green transition-colors">Reviews</a>
+      <a href="/contact" class="text-text text-sm font-medium hover:text-green transition-colors">Contact</a>
+    </div>
+
+    <a
+      href="/contact"
+      class="hidden md:inline-flex shrink-0 bg-green text-white font-bold text-sm uppercase px-4 py-2 rounded-none hover:bg-green-dark transition-colors"
+    >
+      FREE ESTIMATE
+    </a>
+
+    <button
+      id="menu-toggle"
+      class="md:hidden text-text p-2 shrink-0"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <Menu id="menu-icon" size={24} />
+      <X id="close-icon" size={24} class="hidden" />
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="hidden md:hidden bg-navy border-t border-border">
+    <div class="flex flex-col px-4 py-4 gap-4">
+      <a href="/services" class="mobile-link text-text text-sm font-medium hover:text-green transition-colors">Services</a>
+      <a href="/work" class="mobile-link text-text text-sm font-medium hover:text-green transition-colors">Our Work</a>
+      <a href="/reviews" class="mobile-link text-text text-sm font-medium hover:text-green transition-colors">Reviews</a>
+      <a href="/contact" class="mobile-link text-text text-sm font-medium hover:text-green transition-colors">Contact</a>
+      <a
+        href="/contact"
+        class="mobile-link bg-green text-white font-bold text-sm uppercase px-4 py-3 rounded-none text-center hover:bg-green-dark transition-colors"
+      >
+        FREE ESTIMATE
+      </a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden');
+    menuIcon?.classList.toggle('hidden');
+    closeIcon?.classList.toggle('hidden');
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+  });
+
+  document.querySelectorAll('.mobile-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      menu?.classList.add('hidden');
+      menuIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+      toggle?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>

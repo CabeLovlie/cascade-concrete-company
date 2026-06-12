@@ -1,0 +1,60 @@
+---
+import { Car, Home, Layers, Building2, Hammer, Pickaxe } from '@lucide/astro';
+
+const services = [
+  {
+    icon: Car,
+    title: 'Driveways',
+    body: 'New pours, replacements, and repairs. Smooth, broom-finished, and built to handle the PNW freeze-thaw cycle.',
+  },
+  {
+    icon: Home,
+    title: 'Patios',
+    body: 'Custom concrete patios in plain, broom-finished, or exposed aggregate. Your outdoor space done right.',
+  },
+  {
+    icon: Layers,
+    title: 'Retaining Walls',
+    body: 'Structural walls that hold their ground. Designed for the slopes and soil conditions of South King County.',
+  },
+  {
+    icon: Building2,
+    title: 'Foundations & Slabs',
+    body: 'Shop pads, ADU foundations, garage floors, and barn slabs poured to spec.',
+  },
+  {
+    icon: Hammer,
+    title: 'Demo & Removal',
+    body: 'Old concrete broken up, hauled away, and the site prepped so the new pour goes in right.',
+  },
+  {
+    icon: Pickaxe,
+    title: 'Excavation',
+    body: 'Site prep, grading, and excavation handled in-house. No waiting on a sub.',
+  },
+];
+---
+
+<section class="section-fade bg-surface py-16 md:py-20 px-4 sm:px-6 lg:px-16">
+  <div class="max-w-7xl mx-auto">
+    <p class="eyebrow mb-3">WHAT WE DO</p>
+    <h2 class="text-white mb-12">Concrete Services <span style="color:#2db832;">Built to Last.</span></h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        services.map(({ icon: Icon, title, body }, index) => (
+          <article class="service-card relative">
+            <span class="absolute top-4 right-4 font-mono text-[11px] text-green/60">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <div class="w-10 h-10 bg-green/20 rounded-md flex items-center justify-center mb-4">
+              <Icon size={20} class="text-green" />
+            </div>
+            <h3 class="text-white uppercase mb-3">{title}</h3>
+            <p class="text-text-muted text-[13px] leading-relaxed">{body}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,65 @@
+---
+import FacebookIcon from './FacebookIcon.astro';
+import InstagramIcon from './InstagramIcon.astro';
+---
+
+<footer class="bg-navy border-t-2 border-green">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div>
+        <span class="font-bold tracking-tight text-xl leading-none text-text block mb-4">CASCADE CONCRETE <span class="font-normal">Co.</span></span>
+        <p class="text-text font-semibold text-sm mb-1">Cascade Concrete Co.</p>
+        <p class="text-text-muted text-sm">South King County, WA · Licensed · Bonded · Insured</p>
+      </div>
+
+      <div class="flex flex-col items-start md:items-end">
+        <a
+          href="tel:+12535550182"
+          class="font-mono text-green text-2xl md:text-3xl font-bold mb-4 hover:text-green-dark transition-colors"
+        >
+          (253) 555-0182
+        </a>
+        <div class="flex flex-wrap gap-x-4 gap-y-2 text-sm text-text-muted mb-4">
+          <a href="/services" class="hover:text-green transition-colors">Services</a>
+          <span>·</span>
+          <a href="/work" class="hover:text-green transition-colors">Our Work</a>
+          <span>·</span>
+          <a href="/reviews" class="hover:text-green transition-colors">Reviews</a>
+          <span>·</span>
+          <a href="/contact" class="hover:text-green transition-colors">Contact</a>
+        </div>
+        <div class="flex items-center gap-4">
+          <a
+            href="https://www.facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2 text-text-muted text-sm hover:text-green transition-colors"
+            aria-label="Facebook"
+          >
+            <FacebookIcon size={18} />
+            Facebook
+          </a>
+          <a
+            href="https://www.instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2 text-text-muted text-sm hover:text-green transition-colors"
+            aria-label="Instagram"
+          >
+            <InstagramIcon size={18} />
+            Instagram
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 pt-6 border-t border-border">
+      <p class="text-text-muted text-xs text-center md:text-left mb-2 italic">
+        Portfolio demo site by Cabe Lovlie · Does not represent an active business
+      </p>
+      <p class="text-text-muted text-xs text-center md:text-left">
+        © 2026 Cascade Concrete Co.
+      </p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaStrip from '../components/CtaStrip.astro';
+import { Star } from '@lucide/astro';
+
+const reviews = [
+  {
+    quote:
+      'The crew did exceptional work from start to finish. My neighbors have been stopping to compliment the results — the attention to detail and the clean worksite really stood out.',
+    reviewer: 'Sandra M. · Homeowner · Renton, WA',
+    label: 'Google Review · Driveway & Steps',
+  },
+  {
+    quote:
+      'From the very first walkthrough I could tell they knew exactly what they were doing. Proper footings, rebar throughout, clean drainage detail — and the pricing was more than fair.',
+    reviewer: 'Kevin P. · Homeowner · Auburn, WA',
+    label: 'Google Review · Retaining Wall',
+  },
+  {
+    quote:
+      'Outstanding work on our back patio. They paid close attention to every detail and made sure we were happy throughout the entire process. Would absolutely hire again.',
+    reviewer: 'Teresa G. · Homeowner · Kent, WA',
+    label: 'Google Review · Back Patio',
+  },
+  {
+    quote:
+      'Clean, smooth, and very well-finished. Professional from estimate to cleanup — I\'d recommend them to anyone.',
+    reviewer: 'Mike T. · Homeowner · Federal Way, WA',
+    label: 'Google Review · Concrete Walkway',
+  },
+  {
+    quote:
+      'Great job removing the old driveway and laying new concrete. They walked us through the finish options and got everything done on time despite some tough weather.',
+    reviewer: 'Brian S. · Homeowner · Covington, WA',
+    label: 'Google Review · Driveway & Walkways',
+  },
+  {
+    quote:
+      "Very professional, great communicators, and skilled at both prep and finish work. Reliable, efficient, and left the site spotless. My kid was sad when the crew left — that tells you everything.",
+    reviewer: 'James E. · Homeowner · Auburn, WA',
+    label: 'Google Review · Concrete Flatwork',
+  },
+];
+---
+
+<BaseLayout
+  title="Reviews"
+  description="4.5-star Google reviews for Cascade Concrete Co. See what homeowners across South King County say about our crew."
+>
+  <PageHero
+    image="/images/mac_walkway_complete_03.jpg"
+    eyebrow="CLIENT REVIEWS"
+    title="What Our Clients Say"
+    subtitle="What customers say about working with the Cascade Concrete team."
+    overlay="rgba(13,17,23,0.82)"
+  />
+
+  <section class="section-fade bg-surface py-16 px-4 sm:px-6 lg:px-16">
+    <div class="max-w-3xl mx-auto">
+      <blockquote class="text-text italic text-lg md:text-xl leading-relaxed mb-6">
+        "The crew did exceptional work from start to finish. My neighbors kept stopping to say something — they noticed the clean worksite as much as the finished result. The attention to detail was impressive."
+      </blockquote>
+      <p class="text-green font-semibold text-sm mb-6">— Sandra M., Homeowner · Renton, WA</p>
+      <p class="text-text-muted text-sm leading-relaxed">
+        Sandra came across Cascade Concrete Co. after noticing a neighbor's project in progress. Her project included a widened driveway, new entry stairs, and a full concrete refresh. The result speaks for itself.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-fade bg-surface py-12 px-4">
+    <div class="max-w-[480px] mx-auto text-center">
+      <p class="font-display text-green text-[96px] leading-none mb-2">4.5</p>
+      <div class="flex justify-center gap-1 mb-3">
+        {Array.from({ length: 4 }).map(() => (
+          <Star size={24} color="#f59e0b" fill="#f59e0b" />
+        ))}
+        <Star size={24} color="#f59e0b" fill="none" />
+      </div>
+      <p class="text-white font-semibold text-sm mb-2">Google Rating · Cascade Concrete Co.</p>
+      <p class="text-text-muted text-xs">South King County, WA · Licensed & Insured</p>
+    </div>
+  </section>
+
+  <section class="section-fade bg-bg py-16 md:py-20 px-4 sm:px-6 lg:px-16">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        reviews.map(({ quote, reviewer, label }) => (
+          <article class="review-card">
+            <div class="flex gap-0.5 mb-3">
+              {Array.from({ length: 4 }).map(() => (
+                <Star size={16} color="#f59e0b" fill="#f59e0b" />
+              ))}
+              <Star size={16} color="#f59e0b" fill="none" />
+            </div>
+            <p class="text-text text-sm italic leading-relaxed mb-4">"{quote}"</p>
+            <p class="text-green font-semibold text-[13px]">{reviewer}</p>
+            <p class="text-text-muted text-[11px] mt-1">{label}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section-fade bg-surface py-12 px-4">
+    <div class="max-w-[480px] mx-auto text-center">
+      <h3 class="text-white mb-3">Had a great experience with us?</h3>
+      <p class="text-text-muted text-sm mb-6">
+        We'd love to hear about it. Reviews on Google help other homeowners find us and help us keep
+        doing what we do.
+      </p>
+      <a
+        href="https://www.google.com/maps"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary"
+      >
+        Leave a Review on Google
+      </a>
+    </div>
+  </section>
+
+  <CtaStrip />
+</BaseLayout>

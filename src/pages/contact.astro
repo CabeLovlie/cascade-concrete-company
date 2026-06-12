@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaStrip from '../components/CtaStrip.astro';
+import { Phone, MapPin, Clock } from '@lucide/astro';
+import FacebookIcon from '../components/FacebookIcon.astro';
+---
+
+<BaseLayout
+  title="Contact"
+  description="Contact Cascade Concrete Co. for a free estimate. Serving South King County."
+>
+  <PageHero
+    image="/images/mac_stairs_complete_01.jpg"
+    eyebrow="GET IN TOUCH"
+    title="Contact Cascade Concrete Co."
+    subtitle="Free estimates. No pressure. Just honest pricing and real concrete work."
+    overlay="rgba(13,17,23,0.82)"
+  />
+
+  <section class="section-fade bg-bg py-16 md:py-20 px-4 sm:px-6 lg:px-16">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+      <div>
+        <h2 class="text-white mb-8">Let's Talk About Your Project</h2>
+
+        <ul class="space-y-6 mb-8">
+          <li>
+            <a href="tel:+12535550182" class="flex items-center gap-4 group">
+              <Phone size={20} class="text-green shrink-0" />
+              <span class="font-mono text-green text-xl md:text-2xl font-bold group-hover:text-green-dark transition-colors">
+                (253) 555-0182
+              </span>
+            </a>
+          </li>
+          <li class="flex items-center gap-4">
+            <MapPin size={20} class="text-green shrink-0" />
+            <span class="text-text-muted">South King County, WA</span>
+          </li>
+          <li class="flex items-center gap-4">
+            <Clock size={20} class="text-green shrink-0" />
+            <span class="text-text-muted">Mon–Sat: 7am–6pm</span>
+          </li>
+        </ul>
+
+        <p class="text-text-muted text-sm mb-6">
+          Serving Auburn, Kent, Renton, Federal Way, Burien, Tukwila, SeaTac, and the greater South
+          King County area.
+        </p>
+
+        <a
+          href="https://www.facebook.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 text-text-muted text-sm hover:text-green transition-colors"
+        >
+          <FacebookIcon size={18} />
+          Follow us on Facebook
+        </a>
+      </div>
+
+      <div>
+        <form
+          name="cascade-estimate"
+          method="POST"
+          action="/thank-you"
+          netlify
+          netlify-honeypot="bot-field"
+          class="space-y-5"
+        >
+          <input type="hidden" name="form-name" value="cascade-estimate" />
+          <p class="hidden">
+            <label>Don't fill this out: <input name="bot-field" /></label>
+          </p>
+
+          <div>
+            <label for="name" class="form-label">Name *</label>
+            <input type="text" id="name" name="name" required placeholder="Your name" class="form-input" />
+          </div>
+
+          <div>
+            <label for="phone" class="form-label">Phone *</label>
+            <input type="tel" id="phone" name="phone" required placeholder="(253) 555-0000" class="form-input" />
+          </div>
+
+          <div>
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" class="form-input" />
+          </div>
+
+          <div>
+            <label for="service" class="form-label">Service</label>
+            <select id="service" name="service" class="form-input">
+              <option value="">Please select a service</option>
+              <option value="Driveway">Driveway</option>
+              <option value="Patio">Patio</option>
+              <option value="Retaining Wall">Retaining Wall</option>
+              <option value="Foundation / Slab">Foundation / Slab</option>
+              <option value="Demolition & Removal">Demolition & Removal</option>
+              <option value="Excavation">Excavation</option>
+              <option value="Multiple services">Multiple services</option>
+              <option value="Other / Not sure">Other / Not sure</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="city" class="form-label">City</label>
+            <input type="text" id="city" name="city" placeholder="Your city" class="form-input" />
+          </div>
+
+          <div>
+            <label for="project" class="form-label">Project</label>
+            <textarea
+              id="project"
+              name="project"
+              rows="4"
+              placeholder="Briefly describe your project — size, timeline, anything we should know"
+              class="form-input resize-none"></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary w-full py-3">Send My Request</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <CtaStrip />
+</BaseLayout>

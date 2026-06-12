@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #0d1117;
+  --color-surface: #161d27;
+  --color-surface-2: #1e2736;
+  --color-border: #2a3545;
+  --color-green: #2db832;
+  --color-green-dark: #1f8a24;
+  --color-green-dim: #1a6e1e;
+  --color-orange: #f07020;
+  --color-navy: #1a2035;
+  --color-text: #f0f0f0;
+  --color-text-muted: #8a9ab0;
+  --color-concrete: #6b7280;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-body text-text bg-bg antialiased;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  h1 {
+    @apply font-display text-h1-mobile md:text-h1-desktop;
+  }
+
+  h2 {
+    @apply font-display text-h2-mobile md:text-h2-desktop;
+  }
+
+  h3 {
+    @apply font-display text-h3-mobile md:text-h3-desktop;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-green font-bold text-[11px] uppercase tracking-[0.18em];
+  }
+
+  .eyebrow-line {
+    @apply flex items-center gap-3;
+  }
+
+  .eyebrow-line::before {
+    content: '';
+    @apply block w-8 h-0.5 bg-green shrink-0;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-1 bg-green text-white font-bold text-sm uppercase tracking-[0.08em] px-6 py-3 rounded-none transition-colors hover:bg-green-dark;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-1 bg-transparent text-white border border-white/25 font-bold text-sm uppercase tracking-[0.08em] px-6 py-3 rounded-none transition-colors hover:border-white/50;
+  }
+
+  .section-fade {
+    @apply opacity-0 translate-y-5 transition-all duration-[400ms] ease-out;
+  }
+
+  .section-fade.is-visible {
+    @apply opacity-100 translate-y-0;
+  }
+
+  .service-card {
+    @apply bg-surface-2 border border-border border-t-[3px] border-t-green p-6;
+  }
+
+  .review-card {
+    @apply bg-surface-2 border border-border border-l-[3px] border-l-green p-6;
+  }
+
+  .form-input {
+    @apply w-full bg-surface-2 border border-border text-text rounded-none px-4 py-3 text-sm transition-colors focus:outline-none focus:border-green;
+  }
+
+  .form-label {
+    @apply block font-semibold text-[13px] text-text-muted uppercase tracking-[0.06em] mb-2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .section-fade {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

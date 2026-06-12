@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroHome from '../components/HeroHome.astro';
+import CredentialBar from '../components/CredentialBar.astro';
+import StatBlock from '../components/StatBlock.astro';
+import ServiceGrid from '../components/ServiceGrid.astro';
+import ReviewStrip from '../components/ReviewStrip.astro';
+import PullQuote from '../components/PullQuote.astro';
+import CtaStrip from '../components/CtaStrip.astro';
+---
+
+<BaseLayout
+  title="Home"
+  description="Cascade Concrete Co. — licensed concrete and excavation contractor serving South King County. Driveways, patios, retaining walls, foundations, and more."
+>
+  <HeroHome />
+  <CredentialBar />
+  <StatBlock />
+  <ServiceGrid />
+  <ReviewStrip />
+  <PullQuote />
+  <CtaStrip />
+</BaseLayout>
