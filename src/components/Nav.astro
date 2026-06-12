@@ -4,8 +4,20 @@ import { Menu, X } from '@lucide/astro';
 
 <header class="sticky top-0 z-50 bg-white border-b-2 border-[#2db832]">
   <div class="flex items-center justify-between h-14 md:h-[68px] px-6 max-w-[1400px] mx-auto">
-    <a href="/" class="flex items-center gap-3 flex-shrink-0">
-      <span class="font-bold tracking-tight text-xl leading-none text-text">CASCADE CONCRETE <span class="font-normal">Co.</span></span>
+    <a href="/" class="flex items-center gap-2 no-underline flex-shrink-0">
+      <!-- C mark badge -->
+      <div class="flex items-center justify-center rounded-[5px] flex-shrink-0"
+           style="width:30px;height:30px;background:#2c5f2e;">
+        <svg width="20" height="20" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19.5 9.5C18 7.6 16 6.3 13.8 6.3C9.6 6.3 6.2 9.8 6.2 14C6.2 18.2 9.6 21.7 13.8 21.7C16 21.7 18 20.4 19.5 18.5"
+                stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <!-- Wordmark -->
+      <div class="flex flex-col leading-none">
+        <span class="font-extrabold uppercase tracking-wide text-[13px] text-gray-900">Cascade Concrete</span>
+        <span class="font-normal uppercase tracking-widest text-[9px] text-gray-400 mt-[2px]">Co. &nbsp;·&nbsp; Auburn, WA</span>
+      </div>
     </a>
 
     <nav class="hidden md:flex flex-1 justify-center gap-8">
