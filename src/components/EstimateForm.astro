@@ -30,9 +30,9 @@ const labelClass = isDark
         <ul class="flex flex-col gap-2.5">
           {[
             'No-obligation estimates',
-            'Licensed, bonded & insured',
+            'Built to licensed & insured standards',
             'Serving Auburn & South King County',
-            'Washington State licensed',
+            'Clear estimate process',
           ].map((item) => (
             <li class="flex items-center gap-2.5 text-[13px] text-white/70">
               <span class="w-1.5 h-1.5 rounded-full bg-green flex-shrink-0"></span>
@@ -53,8 +53,8 @@ const labelClass = isDark
       class="flex flex-col gap-3.5"
     >
       <input type="hidden" name="form-name" value="cascade-estimate" />
-      <p class="hidden">
-        <label>Don't fill this out: <input name="bot-field" /></label>
+      <p class="hidden" aria-hidden="true">
+        <input name="bot-field" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;height:0;width:0;overflow:hidden;" />
       </p>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
@@ -119,8 +119,8 @@ const labelClass = isDark
     class="flex flex-col gap-3.5"
   >
     <input type="hidden" name="form-name" value="cascade-estimate" />
-    <p class="hidden">
-      <label>Don't fill this out: <input name="bot-field" /></label>
+    <p class="hidden" aria-hidden="true">
+      <input name="bot-field" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;height:0;width:0;overflow:hidden;" />
     </p>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">

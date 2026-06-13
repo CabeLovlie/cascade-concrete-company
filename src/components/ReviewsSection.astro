@@ -57,14 +57,7 @@ const { reviews = defaultReviews, showGoogleLink = true } = Astro.props;
 
     {showGoogleLink && (
       <div class="text-center mt-10">
-        <a
-          href="https://www.google.com/maps"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-block border border-green text-green text-[13px] font-semibold px-5 py-2 rounded-sm hover:bg-green hover:text-white transition-colors"
-        >
-          See all reviews on Google
-        </a>
+        <span class="text-sm text-gray-500 italic">Sample review layout — shown for portfolio demonstration</span>
       </div>
     )}
   </div>
