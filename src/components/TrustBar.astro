@@ -1,11 +1,16 @@
 ---
 const items = [
-  { value: '◆', label: 'Local Concrete & Site Work', valueClass: 'text-green' },
-  { value: '◆', label: '10+ Years Experience', valueClass: 'text-text' },
-  { value: '◆', label: '200+ Projects Completed', valueClass: 'text-green' },
-  { value: '◆', label: 'Driveways · Slabs · Retaining Walls', valueClass: 'text-text' },
-  { value: '◆', label: 'Clear Estimate Process', valueClass: 'text-green' },
-  { value: '◆', label: 'Licensed · Bonded · Insured', valueClass: 'text-text' },
+  { value: '4.5★', label: 'Google Rated', valueClass: 'text-[#f59e0b]' },
+  { value: '10+', label: 'Years in Business', valueClass: 'text-text' },
+  { value: '200+', label: 'Projects Completed', valueClass: 'text-green' },
+  {
+    value: 'Driveways · Slabs · Retaining Walls',
+    label: 'Concrete & Site Work',
+    valueClass: 'text-text',
+    descriptor: true,
+  },
+  { value: 'Clear', label: 'Estimate Process', valueClass: 'text-green' },
+  { value: 'LBI', label: 'Licensed · Bonded · Insured', valueClass: 'text-text' },
 ];
 ---
 
@@ -17,7 +22,15 @@ const items = [
           <div class="hidden sm:block w-px bg-border self-stretch" aria-hidden="true"></div>
         )}
         <div class="flex flex-col items-center gap-0.5 px-4 sm:px-7 py-3 sm:py-0 w-1/2 sm:w-auto">
-          <span class={`font-display text-[22px] leading-none ${item.valueClass}`}>{item.value}</span>
+          <span
+            class:list={[
+              item.descriptor
+                ? 'text-[11px] font-semibold text-text font-body leading-snug text-center max-w-[160px]'
+                : `font-display text-[22px] leading-none ${item.valueClass}`,
+            ]}
+          >
+            {item.value}
+          </span>
           <span class="text-[10px] font-semibold uppercase tracking-[0.1em] text-text-muted text-center">{item.label}</span>
         </div>
       </>
